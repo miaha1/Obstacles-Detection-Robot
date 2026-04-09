@@ -23,7 +23,8 @@ def step_from_to(node0, node1, limit=75):
     ############################################################################
     # 1. If distance between two nodes is less than limit, return node1
     # 2. Otherwise, return a node in the direction from node0 to node1 whose
-    #    distance to node0 is limit.
+    #    distance to node0 is limit. Recall that each iteration we can move
+    #    limit units at most
     
     distance = get_dist(node0, node1)
     # if distance btw node0 and node1 is less than limit, return node1
@@ -104,6 +105,7 @@ async def CozmoPlanning(robot: cozmo.robot.Robot):
     global cmap, stopevent
 
     ########################################################################
+    # TODO: please enter your code below.
     # Description of function provided in instructions
     # Level cozmo head 
     await robot.set_head_angle(cozmo.util.degrees(0)).wait_for_completed()
@@ -144,7 +146,6 @@ async def CozmoPlanning(robot: cozmo.robot.Robot):
                     added_obstacles = True
         return added_obstacles
     
-    
     # Loop to explore if target cube is not visible or if the 
     # path to the target cube is blocked by new obstacles
     while not stopevent.is_set():
@@ -153,7 +154,7 @@ async def CozmoPlanning(robot: cozmo.robot.Robot):
         if target_cube is not None and target_cube.is_visible:
             break
         
-        # Calculate the distance to the center of the arena (cmap.width / 2, cmap.height / 2)
+        # Calculate the distance to the center of the arena
         cx, cy = cmap.width / 2, cmap.height / 2
         dx = cx - (robot.pose.position.x + offset_x)
         dy = cy - (robot.pose.position.y + offset_y)
