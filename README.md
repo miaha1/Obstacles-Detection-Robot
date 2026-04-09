@@ -1,7 +1,5 @@
 # Obstacles-Detection-Robot
 Robot Path Planning While Detecting Obstacles
-# Rapidly-Exploring Random Trees (RRT)
-
 ## Overview
 This project focuses on implementing and testing Rapidly-Exploring Random Trees (RRT) for robot path planning. The goal is to develop an efficient algorithm for navigating through complex environments.
 
